@@ -1,0 +1,37 @@
+body {
+    font-family: Helvetica;
+    font-weight: normal;
+    }
+
+.row gy-500 p-4{
+    position: relative;
+    max-width: 1200px;
+    margin-left: 12%;
+    margin-top: 5%;
+} 
+
+#footer {
+    clear: both;
+    height: 350px;
+    width: 100%;
+    z-index: 7;
+    background-color: #0D28A6;
+    color: #FFFFFF;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 12px 12px 12px 12px;
+    padding:5px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .d-flex {
+    display:flex;
+    flex-direction: row-reverse;
+} */
+
+.col-lg-6 d-flex flex-column py-auto {
+    display:flex;
+    align-items: center;
+}
