@@ -1,83 +1,105 @@
-const carContent = document.getElementById("car-content");
-const driverSelect = document.getElementById("driver");
-const tanggalInput = document.getElementById("tanggal");
-const waktuSelect = document.getElementById("waktu");
-const jumlahPenumpangInput = document.getElementById("jumlahPenumpang");
-const cariButton = document.getElementById("cari");
+const searchBtn = document.getElementById("cari"); // id dari button yang sesuai
+import cars from "./probable-garbanzo/data/cars.json" with { type: "json" };
+const hasilSearch = document.getElementById("car-content"); // ini juga diubah sesuai id
 
-cariButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  const driverValue = driverSelect.value;
-  const tanggalValue = tanggalInput.value;
-  const waktuValue = waktuSelect.value;
-  const jumlahPenumpangValue = jumlahPenumpangInput.value;
 
-  searchCarContent(driverValue, tanggalValue, waktuValue, jumlahPenumpangValue);
-});
+searchBtn.addEventListener("click", (event) => {
+    
+  hasilSearch.innerHTML = "";
+  const tipeDriver = document.getElementById("driver").value;
+  const tanggalSewa = document.getElementById("tanggal").value;
+  const waktuJemput = document.getElementById("waktu").value;
 
-async function searchCarContent(driver, tanggal, waktu, jumlahPenumpang) {
-  carContent.innerHTML = "<h1>Loading...</h1>";
+  if (!tipeDriver) {
+    alert("Silakan pilih tipe driver!");
+    event.preventDefault();
+    return;
+  }
 
-  try {
-    const data = await getCarData();
+  if (!tanggalSewa) {
+    alert("Silakan pilih tanggal sewa!");
+    event.preventDefault();
+    return;
+  }
 
-    // Combine date and time to a single datetime string for comparison
-    const selectedDateTime = new Date(`${tanggal}T${waktu}`).toISOString();
+  if (!waktuJemput) {
+    alert("Silakan pilih waktu jemput!");
+    event.preventDefault();
+    return;
+  }
 
-    // Filter cars based on availability date and capacity
-    const availableCars = data.filter((car) => {
-      const availableAt = new Date(car.availableAt);
-      return availableAt >= selectedDateTime && car.capacity >= jumlahPenumpang;
-    });
+  const jumlahPenumpangInput = document.getElementById("jumlahPenumpang").value;
+  const jumlahPenumpang = jumlahPenumpangInput
+    ? parseInt(jumlahPenumpangInput, 10)
+    : null;
+  let carsFilter = [];
+  const sewaDate = new Date(tanggalSewa);
 
-    if (availableCars.length === 0) {
-      carContent.innerHTML = `<h1>No cars found!</h1>`;
-      return;
+  const formatRupiah = (number) => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
+    }).format(number);
+  };
+
+  const driverType = () => {
+    return tipeDriver === "1"; // Mengembalikan true untuk dengan sopir, false untuk tanpa sopir
+  };
+
+  cars.map((car) => {
+    const carAvailableDate = new Date(car.availableAt).getTime();
+    const sewaTimestamp = sewaDate.getTime();
+
+    // Filter berdasarkan ketersediaan mobil, jumlah penumpang, dan tipe driver
+    if (
+      carAvailableDate <= sewaTimestamp &&
+      (jumlahPenumpang === null || car.capacity >= jumlahPenumpang) &&
+      car.available === driverType()
+    ) {
+      carsFilter.push(car);
     }
+  });
 
-    let carContentHTML = "";
-    availableCars.forEach((car) => {
-      if (
-        car &&
-        car.image &&
-        car.manufacture &&
-        car.type &&
-        car.description &&
-        car.capacity &&
-        car.transmission &&
-        car.year
-      ) {
-        const Content = `
-          <div class="col-md-3">
-            <div class="card" style="width: 18rem">
-              <img src="${car.image}" class="card-img-top" alt="..."/>
+  const render = (template) => {
+    hasilSearch.innerHTML += template;
+  };
+
+  if (carsFilter.length <= 0) {
+    const template = `
+    <h5 class="text-center msg">Data tidak ditemukan...</h5>
+    `;
+    render(template);
+  } else {
+    carsFilter.map((car) => {
+      const template = `
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+            <div class="card w-100" style="width: 20rem">
+              <img src="${car.image}" class="card-img-top card-img img-fluid" alt="..." />
               <div class="card-body">
-                <h5 class="card-title">${car.manufacture} / ${car.model}</h5>
-                <h4><b>Harga per Hari: ${car.rentPerDay} IDR</b></h4>
-                <p class="card-text">${car.description}</p>
-                <h6>Kapasitas: ${car.capacity} Penumpang</h6>
-                <h6>Transmisi: ${car.transmission}</h6>
-                <h6>Tahun: ${car.year}</h6>
-                <a href="#" class="btn btn-success">Pilih Mobil</a>
+                <h6 class="card-title">${car.manufacture}</h6>
+                <h5>${formatRupiah(car.rentPerDay)}/hari</h5>
+                <p class="card-text">
+                  ${car.description}
+                </p>
+                <p>
+                  <img src="Asset/fi_users.png" alt=""/>
+                  ${car.capacity} Orang
+                </p>
+                <p>
+                  <img src="Asset/fi_settings.png" alt=""/>
+                  ${car.transmission}
+                </p>
+                <p>
+                  <img src="Asset/fi_calendar.png" alt=""/>
+                  Tahun ${car.year}
+                </p>
+                <a href="#" class="btn btn-success pilih-btn p-2">Pilih Mobil</a>
               </div>
             </div>
           </div>
-        `;
-        carContentHTML += Content;
-      }
+    `;
+      render(template);
     });
-    carContent.innerHTML = carContentHTML;
-  } catch (error) {
-    console.error("Error fetching data:", error);
   }
-}
-
-async function getCarData() {
-  try {
-    const response = await fetch("data/cars.json");
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-}
+});
