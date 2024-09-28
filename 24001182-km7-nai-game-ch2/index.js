@@ -1,6 +1,6 @@
-const searchBtn = document.getElementById("cari"); // id dari button yang sesuai
-import cars from "./probable-garbanzo/data/cars.json" with { type: "json" };
-const hasilSearch = document.getElementById("car-content"); // ini juga diubah sesuai id
+const searchBtn = document.getElementById("cari"); 
+import cars from "./cars.json" with { type: "json" };
+const hasilSearch = document.getElementById("car-content"); 
 
 
 searchBtn.addEventListener("click", (event) => {
@@ -10,23 +10,23 @@ searchBtn.addEventListener("click", (event) => {
   const tanggalSewa = document.getElementById("tanggal").value;
   const waktuJemput = document.getElementById("waktu").value;
 
-  if (!tipeDriver) {
-    alert("Silakan pilih tipe driver!");
-    event.preventDefault();
-    return;
-  }
+  // if (!tipeDriver) {
+  //   alert("Silakan pilih tipe driver!");
+  //   event.preventDefault();
+  //   return;
+  // }
 
-  if (!tanggalSewa) {
-    alert("Silakan pilih tanggal sewa!");
-    event.preventDefault();
-    return;
-  }
+  // if (!tanggalSewa) {
+  //   alert("Silakan pilih tanggal sewa!");
+  //   event.preventDefault();
+  //   return;
+  // }
 
-  if (!waktuJemput) {
-    alert("Silakan pilih waktu jemput!");
-    event.preventDefault();
-    return;
-  }
+  // if (!waktuJemput) {
+  //   alert("Silakan pilih waktu jemput!");
+  //   event.preventDefault();
+  //   return;
+  // }
 
   const jumlahPenumpangInput = document.getElementById("jumlahPenumpang").value;
   const jumlahPenumpang = jumlahPenumpangInput
