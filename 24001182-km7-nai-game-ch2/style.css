@@ -72,3 +72,8 @@ body {
   background-color: #5cb85f;
   border-radius: 4px;
 }
+.card-img {
+  width: 100%; /* Menyesuaikan lebar gambar dengan kartu */
+  height: 200px; /* Atur tinggi tetap untuk semua gambar */
+  object-fit: cover; /* Gambar akan dipotong untuk mengisi kotak tanpa mengubah rasio aspek */
+}

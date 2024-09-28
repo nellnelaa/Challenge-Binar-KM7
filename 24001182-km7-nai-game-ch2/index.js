@@ -44,7 +44,7 @@ searchBtn.addEventListener("click", (event) => {
   };
 
   const driverType = () => {
-    return tipeDriver === "1"; // Mengembalikan true untuk dengan sopir, false untuk tanpa sopir
+     return tipeDriver === "1" || tipeDriver === "2"; // Mengembalikan true untuk dengan sopir, false untuk tanpa sopir
   };
 
   cars.map((car) => {
@@ -75,7 +75,7 @@ searchBtn.addEventListener("click", (event) => {
       const template = `
       <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
             <div class="card w-100" style="width: 20rem">
-              <img src="${car.image}" class="card-img-top card-img img-fluid" alt="..." />
+              <img src="${car.image}" class="card-img-top card-img img-fluid fixed-size-img" alt="..." />
               <div class="card-body">
                 <h6 class="card-title">${car.manufacture}</h6>
                 <h5>${formatRupiah(car.rentPerDay)}/hari</h5>
