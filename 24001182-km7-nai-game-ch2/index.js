@@ -1,7 +1,14 @@
-const searchBtn = document.getElementById("cari"); 
-import cars from "./cars.json" with { type: "json" };
-const hasilSearch = document.getElementById("car-content"); 
+const searchBtn = document.getElementById("cari"); // ambil inputan
+import cars from "./cars.json" with { type: "json" }; //import data
+const hasilSearch = document.getElementById("car-content"); // variable nampilin hasi
 
+// Function to generate a random future date within 1 month
+const randomFutureDate = () => {
+  const randomDays = Math.floor(Math.random() * 30) + 1; // Random number between 1 and 30
+  const randomDate = new Date();
+  randomDate.setDate(randomDate.getDate() + randomDays); // Add random days to current date
+  return randomDate.toISOString(); // Convert to ISO string format
+};
 
 searchBtn.addEventListener("click", (event) => {
     
@@ -9,24 +16,6 @@ searchBtn.addEventListener("click", (event) => {
   const tipeDriver = document.getElementById("driver").value;
   const tanggalSewa = document.getElementById("tanggal").value;
   const waktuJemput = document.getElementById("waktu").value;
-
-  // if (!tipeDriver) {
-  //   alert("Silakan pilih tipe driver!");
-  //   event.preventDefault();
-  //   return;
-  // }
-
-  // if (!tanggalSewa) {
-  //   alert("Silakan pilih tanggal sewa!");
-  //   event.preventDefault();
-  //   return;
-  // }
-
-  // if (!waktuJemput) {
-  //   alert("Silakan pilih waktu jemput!");
-  //   event.preventDefault();
-  //   return;
-  // }
 
   const jumlahPenumpangInput = document.getElementById("jumlahPenumpang").value;
   const jumlahPenumpang = jumlahPenumpangInput
@@ -48,6 +37,10 @@ searchBtn.addEventListener("click", (event) => {
   };
 
   cars.map((car) => {
+    // Randomize availableAt date for each car
+    const randomAvailableAt = randomFutureDate();
+    car.availableAt = randomAvailableAt;
+
     const carAvailableDate = new Date(car.availableAt).getTime();
     const sewaTimestamp = sewaDate.getTime();
 

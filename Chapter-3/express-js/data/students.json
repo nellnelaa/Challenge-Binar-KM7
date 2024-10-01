@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "name": "Naila Jinan Gaisani",
+    "nickName": "Naila",
+    "class": "FSW-1",
+    "address": {
+      "province": "East Java",
+      "city": "Surabaya"
+    },
+    "education": {
+      "bachelor": "Universitas Pembangunan Nasional Veteran Jawa Timur"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Bambang Suryono",
+    "nickName": "Bambang",
+    "class": "FSW-2",
+    "address": {
+      "province": "East Java",
+      "city": "Malang"
+    },
+    "education": {
+      "bachelor": "Universitas Brawijaya"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Maritza Rafashakilla",
+    "nickName": "Mayca",
+    "class": "FSW-2",
+    "address": {
+      "province": "East Java",
+      "city": "Surabaya"
+    },
+    "education": {
+      "bachelor": "Universitas Airlangga"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Dikey Bulgaricus",
+    "nickName": "Dikey",
+    "class": "FSW-2",
+    "address": {
+      "province": "DKI Jakarta",
+      "city": "Jakarta"
+    },
+    "education": {
+      "bachelor": "Universitas Negeri Jakarta"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Joko Anwar",
+    "nickName": "Joko",
+    "class": "FSW-3",
+    "address": {
+      "province": "Central Java",
+      "city": "Solo"
+    },
+    "education": {
+      "bachelor": "Universitas Sebelas Maret"
+    }
+  },
+  {
+    "id": 6,
+    "name": "I Gusti Ngurah Karunya Pratama",
+    "nickName": "Gusti",
+    "class": "FSW-1",
+    "address": {
+      "province": "East Java",
+      "city": "Surabaya"
+    },
+    "education": {
+      "bachelor": "Institut Teknologi Sepuluh Nopember"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Naifa Hanan Gaisani",
+    "nickName": "Naifa",
+    "class": "FSW-1",
+    "address": {
+      "province": "East Java",
+      "city": "Jember"
+    },
+    "education": {
+      "bachelor": "Universitas Jember"
+    }
+  }
+]

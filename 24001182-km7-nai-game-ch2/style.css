@@ -77,3 +77,37 @@ body {
   height: 200px; /* Atur tinggi tetap untuk semua gambar */
   object-fit: cover; /* Gambar akan dipotong untuk mengisi kotak tanpa mengubah rasio aspek */
 }
+
+.kartu {
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.kartu:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.kartu:active {
+  transform: scale(0.98);
+  transition: all 0.1s ease-in;
+}
+
+@media (max-width: 768px) {
+  .kartu {
+    margin-bottom: 20px;
+  }
+
+  .kartu:hover {
+    transform: none;
+  }
+
+  .kartu:active {
+    transform: scale(0.98);
+  }
+  .card {
+    margin-bottom: 20px;
+  }
+}
