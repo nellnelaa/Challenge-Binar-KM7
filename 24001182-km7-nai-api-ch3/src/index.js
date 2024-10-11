@@ -1,7 +1,7 @@
 require("dotenv").config(); //to enable .env called
 const express = require("express"); //import express with non-module
 require["express-async-errors"];
-const uuid = require("uuid");
+const fileUpload = require("express-fileupload");
 const router = require("./routes");
 const { errorHandler, notFoundURLHandler } = require("./middlewares/errors");
 
