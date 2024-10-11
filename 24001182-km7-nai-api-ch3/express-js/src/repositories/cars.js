@@ -1,6 +1,7 @@
 const fs = require("fs");
 const uuid = require("uuid");
 const cars = require("../../data/cars.json");
+const { NotFoundError, InternalServerError } = require("../utils/request");
 
 exports.getCars = (
   plate,
@@ -36,10 +37,6 @@ exports.getCars = (
       const isFoundRentPerDay = car.rentPerDay;
       result = result && isFoundRentPerDay;
     }
-    if (capacity) {
-      const isFoundCapacity = car.capacity;
-      result = result && isFoundCapacity;
-    }
     if (transmission) {
       const isFoundTransmission = car.transmission
         .toLowerCase()
@@ -54,6 +51,9 @@ exports.getCars = (
       const isFoundYear = car.year;
       result = result && isFoundYear;
     }
+    if (capacity !== null && capacity !== undefined) {
+      result = result && car.capacity > capacity; // Only show cars with capacity greater than the requested capacity
+    }
 
     return result;
   });
@@ -61,8 +61,7 @@ exports.getCars = (
 };
 
 exports.getCarById = (id) => {
-  //find student by id
-  const car = students.find((car) => car.id == id);
+  const car = cars.find((car) => car.id == id);
   return car;
 };
 
@@ -71,7 +70,7 @@ exports.createCar = (data) => {
 
   const newCar = {
     id: uniqueId,
-    ...req.body,
+    ...data,
   };
 
   cars.push(newCar);
@@ -90,7 +89,7 @@ exports.updateCar = (id, data) => {
   // Update the json data
   fs.writeFileSync(
     "./data/cars.json",
-    JSON.stringify(students, null, 4),
+    JSON.stringify(cars, null, 4),
     "utf-8"
   );
   return car;

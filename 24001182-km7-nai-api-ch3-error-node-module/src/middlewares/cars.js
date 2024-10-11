@@ -7,11 +7,11 @@ exports.validateGetCars = (req, res, next) => {
     plate: z.string().optional(),
     manufacture: z.string().optional(),
     model: z.string().optional(),
-    rentPerDay: z.number().optional(),
-    capacity: z.number().optional(),
+    rentPerDay: z.coerce.number().optional(), // Ensure it's treated as a number
+    capacity: z.coerce.number().optional(), // Ensure capacity is treated as a number
     transmission: z.string().optional(),
     type: z.string().optional(),
-    year: z.number().optional(),
+    year: z.coerce.number().optional(),
   });
 
   const resultValidateQuery = validateQuery.safeParse(req.params);
@@ -38,19 +38,21 @@ exports.validateGetCarById = (req, res, next) => {
 };
 
 exports.validateCreateCar = (req, res, next) => {
+
+
   // Validation body schema
   const validateBody = z.object({
-    plate: z.string().optional(),
-    manufacture: z.string().optional(),
-    model: z.string().optional(),
-    rentPerDay: z.number().optional(),
-    capacity: z.number().optional(),
+    plate: z.string(),
+    manufacture: z.string(),
+    model: z.string(),
+    rentPerDay: z.number(),
+    capacity: z.number(),
     description: z.string(),
     availableAt: z.string(),
-    transmission: z.string().optional(),
+    transmission: z.string(),
     available: z.string(),
-    type: z.string().optional(),
-    year: z.number().optional(),
+    type: z.string(),
+    year: z.number(),
     options: z.string(),
     specs: z.string(),
   });

@@ -1,4 +1,4 @@
-const studentRepository = require("../repositories/cars");
+const carRepository = require("../repositories/cars");
 const { imageUpload } = require("../utils/image-kit");
 const { NotFoundError, InternalServerError } = require("../utils/request");
 
@@ -25,7 +25,7 @@ exports.getCars = (
 };
 
 exports.getCarById = (id) => {
-  const car = carRepository.getCartById(id);
+  const car = carRepository.getCarById(id);
   if (!car) {
     throw new NotFoundError("Car is Not Found!");
   }
