@@ -9,8 +9,18 @@
       "request": "launch",
       "name": "Chapter-3",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/Chapter-3/express-js/index.js",
-      "cwd": "${workspaceFolder}/Chapter-3/express-js"
+      "cwd": "${workspaceFolder}/Chapter-3/express-js",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "24001182-km7-nai-game-ch3",
+      "skipFiles": ["<node_internals>/**"],
+      "cwd": "${workspaceFolder}/24001182-km7-nai-api-ch3",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"]
     }
   ]
 }

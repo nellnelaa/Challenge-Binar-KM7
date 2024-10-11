@@ -40,37 +40,43 @@ body {
   margin-top: 1rem;
 }
 
-.btn-dropdown-custom {
+/* .btn-dropdown-custom {
   background-color: white;
   color: black;
   border: 1px solid #ccc;
-}
+} */
 
 /* Saat tombol ditekan, berubah warna menjadi hijau */
-.btn-dropdown-custom:focus,
+/* .btn-dropdown-custom:focus,
 .btn-dropdown-custom:active,
 .btn-dropdown-custom.show {
   background-color: green;
   color: white;
   border-color: green;
-}
+} */
 
 /* Ubah warna ikon (jika ada) saat dropdown terbuka */
-.btn-dropdown-custom i {
+/* .btn-dropdown-custom i {
   color: black;
 }
 
 .btn-dropdown-custom.show i {
   color: white;
-}
+} */
 
 .button-register {
-  height: 55px;
+  height: 50px;
   width: 100px;
   margin-top: 15px;
   color: #ffffff;
-  background-color: #5cb85f;
+  background-color: #5cb85c;
   border-radius: 4px;
+}
+.floating-form{
+  margin-top: -30px;
+  margin-bottom: -30px;
+  position: relative;
+  z-index: 10;
 }
 .card-img {
   width: 100%; /* Menyesuaikan lebar gambar dengan kartu */

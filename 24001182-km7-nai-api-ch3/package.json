@@ -1,5 +1,5 @@
 {
-  "name": "express",
+  "name": "24001182-km7-nai-api-ch3",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,7 @@
     "express-async-errors": "^3.1.1",
     "express-fileupload": "^1.5.1",
     "imagekit": "^5.2.0",
+    "uuid": "^10.0.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
