@@ -5,33 +5,6 @@ const fs = require("fs"); // import file system module
 const { z } = require("zod");
 const cars = require("./data/cars.json"); //import data car
 
-// Standarize response
-const successResponse = (res, data) => {
-  res.status(200).json({
-    success: true,
-    data,
-  });
-};
-
-class BadRequestError extends Error {
-  constructor(errors) {
-    super("Validation failed!");
-    this.errors = errors;
-    this.status = 400;
-  }
-}
-
-class NotFoundError extends Error {
-  constructor(message) {
-    if (message) {
-      super(message);
-    } else {
-      super("Data is Not Found!");
-    }
-    this.status = 404;
-  }
-}
-
 /*make initiate express application */
 const app = express();
 const port = 3000;
@@ -55,61 +28,6 @@ app.get("/cars", (req, res, next) => {
     transmission: z.string().optional(),
     type: z.string().optional(),
     year: z.number().optional(),
-  });
-
-  const resultValidateQuery = validateQuery.safeParse(req.params);
-  if (!resultValidateQuery.success) {
-    // If validation fails, return error messages
-    throw new BadRequestError(resultValidateQuery.error.errors);
-  }
-
-  const searchedCar = cars.filter((car) => {
-    // Do filter logic here
-    let result = true;
-    if (req.query.plate) {
-      const isFoundPlate = car.plate
-        .toLowerCase()
-        .includes(req.query.plate.toLowerCase());
-      result = result && isFoundPlate;
-    }
-    if (req.query.manufacture) {
-      const isFoundManufacture = car.manufacture
-        .toLowerCase()
-        .includes(req.query.manufacture.toLowerCase());
-      result = result && isFoundManufacture;
-    }
-    if (req.query.model) {
-      const isFoundModel = car.model
-        .toLowerCase()
-        .includes(req.query.model.toLowerCase());
-      result = result && isFoundModel;
-    }
-    if (req.query.rentPerDay) {
-      const isFoundRentPerDay = car.rentPerDay;
-      result = result && isFoundRentPerDay;
-    }
-    if (req.query.capacity) {
-      const isFoundCapacity = car.capacity;
-      result = result && isFoundCapacity;
-    }
-    if (req.query.transmission) {
-      const isFoundTransmission = car.transmission
-        .toLowerCase()
-        .includes(req.query.transmission.toLowerCase());
-      result = result && isFoundTransmission;
-    }
-    if (req.query.type) {
-      const isFoundType = car.type
-        .toLowerCase()
-        .includes(req.query.type.toLowerCase());
-      result = result && isFoundType;
-    }
-    if (req.query.year) {
-      const isFoundYear = car.year;
-      result = result && isFoundYear;
-    }
-
-    return result;
   });
 
   successResponse(res, searchedCar);

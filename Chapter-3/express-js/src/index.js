@@ -21,9 +21,9 @@ app.use(
 
 
 /*make a routing and response */
-// app.get("/", (req, res) => {
-//   res.send(`Hello world, I am using nodemon!`);
-// });
+app.get("/", (req, res) => {
+  res.send(`Hello world, I am using nodemon!`);
+});
 
 // all routes define
 app.use("/", router);

@@ -95,8 +95,13 @@
         "name": "Data coba",
         "nickName": "Coba bolo",
         "class": "FSW-1",
-        "address": {},
-        "education": {},
-        "profilePicture": "https://ik.imagekit.io/puqb9jj27/car01.min_hbmHsnwRj.jpg"
+        "address": {
+            "province": "Jakarta Timurrrrrrrrrrr",
+            "city": "Bekasi"
+        },
+        "education": {
+            "bachelor": "Universitas Jakarta"
+        },
+        "profilePicture": "https://ik.imagekit.io/puqb9jj27/car02.min_m-tZFaVZm.jpg"
     }
 ]

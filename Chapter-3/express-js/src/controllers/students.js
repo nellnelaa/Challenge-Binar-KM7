@@ -41,22 +41,22 @@ exports.createStudent = async (req, res, next) => {
 exports.updateStudent = async (req, res, next) => {
   // Get the id from params
   const { id } = req.params;
-
-   const requestBody = {
-     ...req.body,
-     address: {
-       province: req.body["address.province"],
-       city: req.body["address.city"],
-     },
-     education: {
-       bachelor: req.body["education.bachelor"],
-     },
-   };
-   delete requestBody["address.province"];
-   delete requestBody["address.city"];
-   delete requestBody["education.bachelor"];
+  console.log(req.body);
+  //  const requestBody = {
+  //    ...req.body,
+  //    address: {
+  //      province: req.body["address.province"],
+  //      city: req.body["address.city"],
+  //    },
+  //    education: {
+  //      bachelor: req.body["education.bachelor"],
+  //    },
+  //  };
+  //  delete requestBody["address.province"];
+  //  delete requestBody["address.city"];
+  //  delete requestBody["education.bachelor"];
    
-  const data = await studentService.updateStudent(id, requestBody, req.files);
+  const data = await studentService.updateStudent(id, req.body, req.files);
   successResponse(res, data);
 };
 
