@@ -22,7 +22,7 @@ app.use(
 
 /*make a routing and response */
 app.get("/", (req, res) => {
-  res.send(`Hello world, I am using nodemon!`);
+  res.send(`Ping Successfully!`);
 });
 
 // all routes define
