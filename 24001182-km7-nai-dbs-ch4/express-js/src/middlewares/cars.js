@@ -2,16 +2,9 @@ const { z } = require("zod");
 const { BadRequestError } = require("../utils/request");
 
 exports.validateGetCars = (req, res, next) => {
-  // Validate the query
   const validateQuery = z.object({
-    plate: z.string().optional(),
     manufacture: z.string().optional(),
     model: z.string().optional(),
-    rentPerDay: z.coerce.number().optional(), // Ensure it's treated as a number
-    capacity: z.coerce.number().optional(), // Ensure capacity is treated as a number
-    transmission: z.string().optional(),
-    type: z.string().optional(),
-    year: z.coerce.number().optional(),
   });
 
   const resultValidateQuery = validateQuery.safeParse(req.params);

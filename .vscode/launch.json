@@ -21,6 +21,42 @@
       "cwd": "${workspaceFolder}/24001182-km7-nai-api-ch3",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Chapter-4",
+      "skipFiles": ["<node_internals>/**"],
+      "cwd": "${workspaceFolder}/Chapter-4/express-js",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Chapter_4_Tim_1",
+      "skipFiles": ["<node_internals>/**"],
+      "cwd": "${workspaceFolder}/Chapter_4_Tim_1",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Chapter-5",
+      "skipFiles": ["<node_internals>/**"],
+      "cwd": "${workspaceFolder}/Chapter-5",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Chapter-6 react.js",
+      "skipFiles": ["<node_internals>/**"],
+      "cwd": "${workspaceFolder}/Chapter-6/student-app",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"]
     }
   ]
 }

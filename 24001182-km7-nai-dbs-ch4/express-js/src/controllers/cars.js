@@ -1,24 +1,10 @@
 const carService = require("../services/cars");
 const { successResponse } = require("../utils/response");
 
-exports.getCars = (req, res, next) => {
-  const rentPerDay = req.query?.rentPerDay
-    ? parseInt(req.query.rentPerDay, 10)
-    : null;
-  const capacity = req.query?.capacity
-    ? parseInt(req.query.capacity, 10)
-    : null;
-  const year = req.query?.year ? parseInt(req.query.year, 10) : null;
-
-  const data = carService.getCars(
-    req.query?.plate,
+exports.getCars = async (req, res, next) => {
+  const data = await carService.getCars(
     req.query?.manufacture,
-    req.query?.model,
-    rentPerDay,
-    capacity,
-    req.query?.transmission,
-    req.query?.type,
-    year
+    req.query?.model
   );
   successResponse(res, data);
 };
