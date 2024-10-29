@@ -2,12 +2,16 @@ require('dotenv').config(); //to enable .env called
 const express = require("express"); //import express with non-module
 require("express-async-errors");
 const fileUpload = require("express-fileupload");
+const cors = require("cors");
 const router = require("./routes");
 const { errorHandler, notFoundURLHandler } = require("./middlewares/errors");
 
 /*make initiate express application */
 const app = express();
 const port = process.env.PORT || 4000;
+
+//enable cors
+app.use(cors());
 
 /* We need to activate body parser/reader */
 app.use(express.json());

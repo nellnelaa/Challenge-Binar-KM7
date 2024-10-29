@@ -5,6 +5,10 @@ const { imageUpload } = require("../utils/image-kit");
 const { Unauthorized } = require("../utils/request");
 
 exports.register = async (data, file) => {
+  const existingUser = await userRepository.getUserByEmail(data.email);
+  if (existingUser) {
+    throw new Unauthorized("Email sudah terdaftar!");
+  }
   // if there are any file (profile picture)
   if (file.profile_picture) {
     data.profile_picture = await imageUpload(file.profile_picture);
