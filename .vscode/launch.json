@@ -45,7 +45,7 @@
       "request": "launch",
       "name": "Chapter-5",
       "skipFiles": ["<node_internals>/**"],
-      "cwd": "${workspaceFolder}/Chapter-5",
+      "cwd": "${workspaceFolder}/Chapter-5/express-js",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"]
     },
