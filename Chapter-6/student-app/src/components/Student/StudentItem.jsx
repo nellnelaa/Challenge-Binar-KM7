@@ -6,9 +6,19 @@ import { Link } from "@tanstack/react-router";
 
 const StudentItem = ({ student }) => {
   return (
-    <Col md={3}>
+    <Col md={3} className="mb-4 mx-2" >
       <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={student?.profile_picture} />
+        <div style={{ width: "100%", height: "100%", overflow: "hidden" }}>
+          <Card.Img
+            variant="top"
+            src={student?.profile_picture}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
+        </div>
         <Card.Body>
           <Card.Title>{student?.name}</Card.Title>
           <Card.Text>{student?.nick_name}</Card.Text>

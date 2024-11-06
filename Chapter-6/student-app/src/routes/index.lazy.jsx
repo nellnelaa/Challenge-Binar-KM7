@@ -1,4 +1,4 @@
-import { createLazyFileRoute } from "@tanstack/react-router";
+import { createLazyFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Row from "react-bootstrap/Row";
@@ -15,6 +15,7 @@ function Index() {
 
   const [students, setStudents] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getStudentData = async () => {
@@ -29,19 +30,22 @@ function Index() {
     if (token) {
       getStudentData();
     }
-  }, [token]);
+    if (!token) {
+      navigate({ to: "/login" });
+    }
+  }, [token, navigate]);
 
-  if (!token) {
-    return (
-      <Row className="mt-4">
-        <Col>
-          <h1 className="text-center">
-            Please login first to get student data!
-          </h1>
-        </Col>
-      </Row>
-    );
-  }
+  // if (!token) {
+  //   return (
+  //     <Row className="mt-4">
+  //       <Col>
+  //         <h1 className="text-center">
+  //           Please login first to get student data!
+  //         </h1>
+  //       </Col>
+  //     </Row>
+  //   );
+  // }
 
   if (isLoading) {
     return (
@@ -52,14 +56,17 @@ function Index() {
   }
 
   return (
-    <Row className="mt-4">
-      {students.length === 0 ? (
-        <h1>Student data is not found!</h1>
-      ) : (
-        students.map((student) => (
-          <StudentItem student={student} key={student?.id} />
-        ))
-      )}
+    <Row>
+        
+      <Col className="d-flex ">
+        {students.length === 0 ? (
+          <h1>Student data is not found!</h1>
+        ) : (
+          students.map((student) => (
+            <StudentItem student={student} key={student?.id}  />
+          ))
+        )}
+      </Col>
     </Row>
   );
 }

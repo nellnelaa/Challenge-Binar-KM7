@@ -9,6 +9,7 @@ import { setToken, setUser } from "../../redux/slices/auth";
 import { profile } from "../../service/auth";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Dropdown } from "react-bootstrap";
 
 const NavigationBar = () => {
   const dispatch = useDispatch();
@@ -38,6 +39,9 @@ const NavigationBar = () => {
     if (token) {
       // hit api auth get profile and pass the token to the function
       getProfile();
+    } 
+    if (!token) {
+      navigate({ to: "/login" });
     }
   }, [dispatch, navigate, token]);
 
@@ -56,42 +60,14 @@ const NavigationBar = () => {
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          Student Wakanda App
+          <img src="/public/images/logo.png" alt="" width="80" height="32" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">
-              Home
-            </Nav.Link>
-            {user && user?.role_id === 1 && (
-              <Nav.Link as={Link} to="/students/create">
-                Create Student
-              </Nav.Link>
-            )}
-            {user && user?.role_id === 1 && (
-              <Nav.Link as={Link} to="/students/edit">
-                Update Student
-              </Nav.Link>
-            )}
-          </Nav>
+          <Nav className="me-auto"></Nav>
           <Nav>
             {user ? (
               <>
-                <Nav.Link as={Link} to="/profile">
-                  <Image
-                    src={user?.profile_picture}
-                    fluid
-                    style={{
-                      width: "30px",
-                      height: "30px",
-                      display: "inline-block",
-                      overflow: "hidden",
-                      borderRadius: "50%",
-                    }}
-                  />{" "}
-                  {user?.name}
-                </Nav.Link>
                 <Form className="d-flex">
                   <Form.Control
                     type="search"
@@ -101,16 +77,41 @@ const NavigationBar = () => {
                   />
                   <Button variant="outline-success">Search</Button>
                 </Form>
-                <Nav.Link onClick={logout}>Logout</Nav.Link>
+
+                <Dropdown align="end" className="ms-3">
+                  <Dropdown.Toggle
+                    variant="link"
+                    id="dropdown-basic"
+                    className="d-flex align-items-center"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    <Image
+                      src={user?.profile_picture}
+                      roundedCircle
+                      width="30"
+                      height="30"
+                      alt="User Profile"
+                      className="me-2"
+                    />
+                    {user?.name}
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item as={Link} to="/profile">
+                      Profile
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </>
             ) : (
               <>
-                <Nav.Link as={Link} to="/login">
+                {/* <Nav.Link as={Link} to="/login">
                   Login
-                </Nav.Link>
-                <Nav.Link as={Link} to="/register">
+                </Nav.Link> */}
+                {/* <Nav.Link as={Link} to="/register">
                   Register
-                </Nav.Link>
+                </Nav.Link> */}
               </>
             )}
           </Nav>

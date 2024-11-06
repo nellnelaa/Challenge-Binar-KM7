@@ -53,53 +53,70 @@ function Login() {
   };
 
   return (
-    <Row className="">
-      <Col md={8} className="d-flex align-items-center justify-content-center">
-        <img
-          src="/src/assets/images/image2.png"
-          alt="Logo"
-          style={{ width: "127%", height: "100%" }}
-        />
-      </Col>
-      <Col md={4}>
-        <div className="offset-md-3">
-          <Form onSubmit={onSubmit}>
-            <Form.Group as={Row} className="mb-3" controlId="email">
-              <Form.Label column sm={3}>
-                Email
-              </Form.Label>
-              <Col sm="9">
+    <>
+      <Row className="vh-100">
+        <Col
+          md={9}
+          className="d-flex align-items-center justify-content-center p-0"
+        >
+          <img
+            src="/public/images/image2.png"
+            alt="Pict"
+            style={{ width: "100%", height:"80%" }}
+          />
+        </Col>
+        <Col
+          md={3}
+          className="d-flex align-items-center justify-content-center"
+        >
+          <div className="login-page">
+            <div>
+              <img
+                src="/public/images/logo.png"
+                alt=""
+                width="90"
+                height="32"
+              />
+              <h3> 
+                <b>Welcome, Admin BCR</b>
+              </h3>
+            </div>
+            <Form onSubmit={onSubmit}>
+              <Form.Group as={Row} className="mb-3" controlId="email">
+                <Form.Label column sm={3}>
+                  Email
+                </Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="Email"
+                  placeholder="Contoh: johndee@gmail.com"
                   required
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
                 />
-              </Col>
-            </Form.Group>
-            <Form.Group as={Row} className="mb-3" controlId="password">
-              <Form.Label column sm={3}>
-                Password
-              </Form.Label>
-              <Col sm="9">
+              </Form.Group>
+
+              <Form.Group as={Row} className="mb-3" controlId="password">
+                <Form.Label column sm={3}>
+                  Password
+                </Form.Label>
                 <Form.Control
                   type="password"
-                  placeholder="Password"
+                  placeholder="6+ karakter"
                   required
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
                 />
-              </Col>
-            </Form.Group>
-            <div className="d-grid gap-2">
-              <Button type="submit" variant="primary">
-                Login
-              </Button>
-            </div>
-          </Form>
-        </div>
-      </Col>
-    </Row>
+              </Form.Group>
+
+              <div className="d-grid gap-2">
+                <Button type="submit" variant="primary">
+                  Sign In
+                </Button>
+              </div>
+            </Form>
+          </div>
+        </Col>
+      </Row>
+    </>
   );
 }

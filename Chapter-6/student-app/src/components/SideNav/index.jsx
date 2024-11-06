@@ -10,6 +10,7 @@ import { setToken, setUser } from "../../redux/slices/auth";
 import { profile } from "../../service/auth";
 // import Button from "react-bootstrap/Button";
 // import Form from "react-bootstrap/Form";
+import PropTypes from "prop-types";
 
 const SideNavigationBar = () => {
   const dispatch = useDispatch();
@@ -35,12 +36,6 @@ const SideNavigationBar = () => {
     }
   }, [dispatch, navigate, token]);
 
-  const logout = (event) => {
-    event.preventDefault();
-    dispatch(setUser(null));
-    dispatch(setToken(null));
-    navigate({ to: "/login" });
-  };
 
   return (
     <div
@@ -52,146 +47,78 @@ const SideNavigationBar = () => {
         className="d-block p-3 link-dark text-decoration-none"
         title="Icon-only"
       >
-        <svg className="bi" width="40" height="32">
-          <use xlinkHref="#bootstrap"></use>
-        </svg>
+        <img src="/public/images/logo.png" alt="" width="40" height="32" />
         <span className="visually-hidden">Icon-only</span>
       </Link>
       <ul className="nav nav-pills nav-flush flex-column mb-auto text-center">
         <li className="nav-item">
           <Link
             to="/"
-            className="nav-link active py-3 border-bottom"
+            className="nav-link py-3 border-bottom"
             aria-current="page"
             title="Home"
           >
-            <svg
-              className="bi"
-              width="24"
-              height="24"
-              role="img"
-              aria-label="Home"
-            >
-              <use xlinkHref="#home"></use>
-            </svg>
+            <Image
+              src="/public/images/Home.png"
+              alt="Home Icon"
+              width="30"
+              height="30"
+            />
+          </Link>
+        </li>
+        <li>
+          <Link to="/car" className="nav-link py-3 border-bottom" title="Car">
+            <Image
+              src="/public/images/Car.png"
+              alt="Car Icon"
+              width="30"
+              height="30"
+            />
           </Link>
         </li>
         <li>
           <Link
-            to="/dashboard"
+            to="/manufacture"
             className="nav-link py-3 border-bottom"
-            title="Dashboard"
+            title="Manufacture"
           >
-            <svg
-              className="bi"
-              width="24"
-              height="24"
-              role="img"
-              aria-label="Dashboard"
-            >
-              <use xlinkHref="#speedometer2"></use>
-            </svg>
+            <Image
+              src="/public/images/Manufacture.png"
+              alt="Manufacture Icon"
+              width="32"
+              height="32"
+            />
+          </Link>
+        </li>
+        <li>
+          <Link to="/spec" className="nav-link py-3 border-bottom" title="Spec">
+            <Image
+              src="/public/images/Spec.png"
+              alt="Spec Icon"
+              width="30"
+              height="33"
+            />
           </Link>
         </li>
         <li>
           <Link
-            to="/orders"
+            to="/option"
             className="nav-link py-3 border-bottom"
-            title="Orders"
+            title="Option"
           >
-            <svg
-              className="bi"
-              width="24"
-              height="24"
-              role="img"
-              aria-label="Orders"
-            >
-              <use xlinkHref="#table"></use>
-            </svg>
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/products"
-            className="nav-link py-3 border-bottom"
-            title="Products"
-          >
-            <svg
-              className="bi"
-              width="24"
-              height="24"
-              role="img"
-              aria-label="Products"
-            >
-              <use xlinkHref="#grid"></use>
-            </svg>
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/customers"
-            className="nav-link py-3 border-bottom"
-            title="Customers"
-          >
-            <svg
-              className="bi"
-              width="24"
-              height="24"
-              role="img"
-              aria-label="Customers"
-            >
-              <use xlinkHref="#people-circle"></use>
-            </svg>
+            <Image
+              src="/public/images/Option.png"
+              alt="Option Icon"
+              width="30"
+              height="33"
+            />
           </Link>
         </li>
       </ul>
-      <div className="dropdown border-top">
-        <a
-          href="#"
-          className="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle"
-          id="dropdownUser3"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <Image
-            src="https://github.com/mdo.png"
-            alt="User"
-            width="24"
-            height="24"
-            roundedCircle
-          />
-        </a>
-        <ul
-          className="dropdown-menu text-small shadow"
-          aria-labelledby="dropdownUser3"
-        >
-          <li>
-            <Link className="dropdown-item" to="/new-project">
-              New project...
-            </Link>
-          </li>
-          <li>
-            <Link className="dropdown-item" to="/settings">
-              Settings
-            </Link>
-          </li>
-          <li>
-            <Link className="dropdown-item" to="/profile">
-              Profile
-            </Link>
-          </li>
-          <li>
-            <hr className="dropdown-divider" />
-          </li>
-          <li>
-            <a className="dropdown-item" href="#" onClick={logout}>
-              Sign out
-            </a>
-          </li>
-        </ul>
-      </div>
     </div>
   );
 };
-
+SideNavigationBar.propTypes = {
+  sidenav: PropTypes.object,
+};
 export default SideNavigationBar;
