@@ -38,8 +38,8 @@ const { BadRequestError, NotFoundError } = require("../utils/request.js");
 const { imageUpload } = require("../utils/imageHandler.js");
 const e = require("express");
 
-const getCarsService = async (manufacture) => {
-  const data = await getCarsRepo(manufacture);
+const getCarsService = async (capacity, availableAt, transmission) => {
+  const data = await getCarsRepo(capacity, availableAt, transmission);
   if (data.length === 0) {
     throw new NotFoundError("Car not found");
   }

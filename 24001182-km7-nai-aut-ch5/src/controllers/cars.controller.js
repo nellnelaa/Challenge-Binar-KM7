@@ -8,12 +8,11 @@ const {
 } = require("../services/cars.service.js");
 
 const getCarsController = async (req, res) => {
-  const { manufacture } = req.query;
+  const { capacity, availableAt, transmission } = req.query;
 
-  const data = await getCarsService(manufacture);
+  const data = await getCarsService(capacity, availableAt, transmission);
   successResponse(res, data);
 };
-
 const getCarByIdController = async (req, res) => {
   const { id } = req.params;
 

@@ -3,7 +3,9 @@ const { BadRequestError } = require("../utils/request");
 
 const validateGetCars = async (req, res, next) => {
   const validateQuery = z.object({
-    manufacture: z.string().optional(),
+    capacity: z.string().optional(),
+    availableAt: z.string().optional(),
+    transmission: z.string().optional(),
   });
 
   const resultValidateQuery = validateQuery.safeParse(req.query);

@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useSelector } from "react-redux";
 import { register } from "../service/auth";
+import { toast } from "react-toastify";
 
 export const Route = createLazyFileRoute("/register")({
   component: Register,
@@ -34,7 +35,7 @@ function Register() {
     event.preventDefault();
 
     if (password != confirmPassword) {
-      alert("Password and password confirmation must be same!");
+      toast.error("Password and password confirmation must be same!");
     }
 
     // hit API here
@@ -55,7 +56,7 @@ function Register() {
       return;
     }
 
-    alert(result.message);
+    toast.error(result.message);
   };
 
   return (

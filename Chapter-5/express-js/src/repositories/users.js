@@ -1,6 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 const JSONBigInt = require("json-bigint");
 const bcrypt = require("bcrypt");
+const axios = require("axios");
 
 const prisma = new PrismaClient();
 
@@ -41,4 +42,11 @@ exports.getUserById = async (id) => {
   // Convert BigInt fields to string for safe serialization
   const serializedStudents = JSONBigInt.stringify(user);
   return JSONBigInt.parse(serializedStudents);
+};
+
+exports.googleLogin = async (accessToken) => {
+  const response = await axios.get(
+    `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`
+  );
+  return response?.data;
 };

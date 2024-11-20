@@ -7,8 +7,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken, setUser } from "../../redux/slices/auth";
 import { profile } from "../../service/auth";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 
 const NavigationBar = () => {
   const dispatch = useDispatch();
@@ -69,11 +67,6 @@ const NavigationBar = () => {
                 Create Student
               </Nav.Link>
             )}
-            {user && user?.role_id === 1 && (
-              <Nav.Link as={Link} to="/students/edit">
-                Update Student
-              </Nav.Link>
-            )}
           </Nav>
           <Nav>
             {user ? (
@@ -92,15 +85,6 @@ const NavigationBar = () => {
                   />{" "}
                   {user?.name}
                 </Nav.Link>
-                <Form className="d-flex">
-                  <Form.Control
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                  />
-                  <Button variant="outline-success">Search</Button>
-                </Form>
                 <Nav.Link onClick={logout}>Logout</Nav.Link>
               </>
             ) : (

@@ -9,9 +9,15 @@ import Image from "react-bootstrap/Image";
 import { getUniversities } from "../../service/university";
 import { getClasses } from "../../service/class";
 import { createStudent } from "../../service/student";
+import { toast } from "react-toastify";
+import Protected from "../../components/Auth/Protected";
 
 export const Route = createLazyFileRoute("/students/create")({
-  component: CreateStudent,
+  component: () => (
+    <Protected roles={[1]}>
+      <CreateStudent />
+    </Protected>
+  ),
 });
 
 function CreateStudent() {
@@ -60,7 +66,7 @@ function CreateStudent() {
       return;
     }
 
-    alert(result?.message);
+    toast.error(result?.message);
   };
 
   return (

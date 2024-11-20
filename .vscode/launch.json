@@ -55,6 +55,27 @@
       "type": "chrome",
       "url": "http://localhost:5173",
       "webRoot": "${workspaceFolder}/Chapter-6/student-app"
+    },
+    {
+      "name": "Challenge-6",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/km7-fsw1-ch6-team1-bcr/student-app"
+    },
+    {
+      "name": "Chapter-7",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/Chapter-7/student-app"
+    },
+    {
+      "name": "Challenge-7",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/km7-fsw1-ch7-team1-bcr/student-app"
     }
   ]
 }

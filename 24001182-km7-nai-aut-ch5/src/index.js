@@ -6,9 +6,11 @@ const port = process.env.PORT || 3000;
 const router = require("./routes/index.route");
 const fileUpload = require("express-fileupload");
 const { errorHandler, notFoundURLHandler } = require("./middleware/errors");
+const cors = require("cors");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 app.use(
   fileUpload({
